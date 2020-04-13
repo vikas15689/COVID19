@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 order-1">
     <div class="row">
 
-      <div class="col-md-4">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
         <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
           <nb-card-header>
             <div class="text-danger number">{{summary.Global.TotalConfirmed | number}}
@@ -16,7 +16,7 @@
           </nb-card-footer>
         </nb-card>
       </div>
-      <div class="col-md-4">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
         <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
           <nb-card-header>
             <div class="text-danger number">{{summary.Global.TotalDeaths | number}}
@@ -31,7 +31,7 @@
           </nb-card-footer>
         </nb-card>
       </div>
-      <div class="col-md-4">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
         <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
           <nb-card-header>
             <div class="text-success number">{{summary.Global.TotalRecovered | number }}
@@ -106,7 +106,7 @@
 
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 order-2">
     <nb-card size='medium' [nbSpinner]="loading" nbSpinnerStatus="primary">
       <nb-card-body class="padding-10">
         <div id="world-map"></div>
@@ -115,12 +115,12 @@
     <nb-card size='small' [nbSpinner]="linechartloading" nbSpinnerStatus="primary">
       <nb-card-body class="padding-10">
         <nb-select placeholder="Case Type" (selectedChange)="updateCaseType($event)" [selected]="selectedCaseType"
-          status="primary" filled class="margin-rt-5">
+          status="primary" filled class="margin-5">
           <nb-option [value]="caseType" class="text-capitalize" *ngFor="let caseType of caseTypes">{{caseType}}
           </nb-option>
         </nb-select>
         <nb-select [placeholder]="'Top '+top+' Countries'" multiple (selectedChange)="updateLineChart($event)"
-          [selected]="topCountries" filled status="primary">
+          [selected]="topCountries" filled class="margin-5" status="primary">
           <nb-option [value]="country" *ngFor="let country of summary.Countries">{{country.Country}}</nb-option>
         </nb-select>
         <div id="line-chart"></div>
