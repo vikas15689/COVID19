@@ -115,12 +115,12 @@
     <nb-card size='small' [nbSpinner]="linechartloading" nbSpinnerStatus="primary">
       <nb-card-body class="padding-10">
         <nb-select placeholder="Case Type" (selectedChange)="updateCaseType($event)" [selected]="selectedCaseType"
-          status="primary" class="margin-rt-5">
+          status="primary" filled class="margin-rt-5">
           <nb-option [value]="caseType" class="text-capitalize" *ngFor="let caseType of caseTypes">{{caseType}}
           </nb-option>
         </nb-select>
         <nb-select [placeholder]="'Top '+top+' Countries'" multiple (selectedChange)="updateLineChart($event)"
-          [selected]="topCountries" status="primary">
+          [selected]="topCountries" filled status="primary">
           <nb-option [value]="country" *ngFor="let country of summary.Countries">{{country.Country}}</nb-option>
         </nb-select>
         <div id="line-chart"></div>
