@@ -124,7 +124,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.chart.destroy();
     this.chart = Highstock.stockChart('line-chart', {
       chart: {
-        height: 300,
+        height: 270,
       },
       rangeSelector: {
         enabled: false,
