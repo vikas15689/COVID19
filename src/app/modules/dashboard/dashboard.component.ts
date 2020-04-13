@@ -72,6 +72,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     return 0;
   }
   updateCaseType(caseType: string) {
+    this.linechartloading=true;
     this.selectedCaseType = caseType;
     this.getTopContriesData();
   }
