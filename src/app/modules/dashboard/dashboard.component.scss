@@ -1,0 +1,98 @@
+:host {
+  display: block;
+  // max-height: 30rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.card-row {
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.card-col {
+  flex: 1 0 calc(50% - 1rem);
+  margin: 0 0.5rem;
+
+
+}
+
+.pull-right{
+  float: right;
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.sub-number {
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+
+.tab-number {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.tab-sub-number {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.tab-number-icon {
+  font-size: 1.1rem;
+  line-height: 0.8;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.margin-rt-5{
+  margin-right: 5px;
+}
+
+.padding-0 {
+  padding: 0px;
+}
+
+.border-bt-none {
+  border-bottom: none;
+}
+
+.card-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-col {
+  flex: 1 0 calc(25% - 1rem);
+  margin: 0 0.5rem;
+  label {
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.highcharts-tooltip>span {
+  padding: 10px;
+  white-space: normal !important;
+  width: 200px;
+}
+
+.loading {
+  margin-top: 10em;
+  text-align: center;
+  color: gray;
+}
+
+.f32 .flag {
+  vertical-align: middle !important;
+}

@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+
+      <div class="col-md-4">
+        <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+          <nb-card-header>
+            <div class="text-danger number">{{summary.Global.TotalConfirmed | number}}
+              <span class="text-danger sub-number">
+                <nb-icon icon="arrow-up" status="danger"></nb-icon>{{summary.Global.NewConfirmed | number}}
+              </span>
+            </div>
+          </nb-card-header>
+          <nb-card-footer>
+            <span class="text-uppercase">Confirmed</span>
+          </nb-card-footer>
+        </nb-card>
+      </div>
+      <div class="col-md-4">
+        <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+          <nb-card-header>
+            <div class="text-danger number">{{summary.Global.TotalDeaths | number}}
+              <span class="text-danger sub-number">
+                <nb-icon icon="arrow-up" status="danger"></nb-icon>{{summary.Global.NewDeaths | number}}
+              </span>
+            </div>
+          </nb-card-header>
+          <nb-card-footer>
+            <span class="text-uppercase">Deaths</span> <span
+              class="pull-right">{{getPercentage(summary.Global.TotalConfirmed,summary.Global.TotalDeaths)}}</span>
+          </nb-card-footer>
+        </nb-card>
+      </div>
+      <div class="col-md-4">
+        <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+          <nb-card-header>
+            <div class="text-success number">{{summary.Global.TotalRecovered | number }}
+              <span class="text-success sub-number">
+                <nb-icon icon="arrow-up" status="success"></nb-icon>{{summary.Global.NewRecovered | number}}
+              </span>
+            </div>
+          </nb-card-header>
+          <nb-card-footer>
+            <span class="text-uppercase">Recovered</span> <span
+              class="pull-right">{{getPercentage(summary.Global.TotalConfirmed,summary.Global.TotalRecovered)}}</span>
+          </nb-card-footer>
+        </nb-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <nb-card [size]="'giant'" [nbSpinner]="loading" nbSpinnerStatus="primary">
+          <nb-card-header class="padding-0 border-bt-none">
+            <nb-list>
+              <nb-list-item>
+                <div class="list-col text-primary cursor-pointer" (click)="setOrderBy('Country')"><label>
+                    Country</label>
+                  <nb-icon [icon]="orderIcon" status="primary" *ngIf="orderByField==='Country'"></nb-icon>
+                </div>
+                <div class="list-col text-primary cursor-pointer" (click)="setOrderBy('TotalConfirmed')"><label>
+                    Confirmed</label>
+                  <nb-icon [icon]="orderIcon" status="primary" *ngIf="orderByField==='TotalConfirmed'"></nb-icon>
+                </div>
+                <div class="list-col text-primary cursor-pointer" (click)="setOrderBy('TotalDeaths')"><label> Deaths</label>
+                  <nb-icon [icon]="orderIcon" status="primary" *ngIf="orderByField==='TotalDeaths'"></nb-icon>
+                </div>
+                <div class="list-col text-primary cursor-pointer" (click)="setOrderBy('TotalRecovered')"><label>
+                    Recovered</label>
+                  <nb-icon [icon]="orderIcon" status="primary" *ngIf="orderByField==='TotalRecovered'"></nb-icon>
+                </div>
+              </nb-list-item>
+            </nb-list>
+          </nb-card-header>
+          <nb-card-body class="padding-0">
+            <nb-list>
+              <nb-list-item *ngFor="let c of summary.Countries | orderBy :orderByField:order">
+                <div class="list-col"> <label>{{ c.Country }}</label></div>
+                <div class="list-col ">
+                  <span class="tab-number">{{c.TotalConfirmed | number}}</span><br />
+                  <span class="text-danger tab-sub-number" *ngIf="c.NewConfirmed>0">
+                    <nb-icon class="tab-number-icon" icon="arrow-up" status="danger"></nb-icon>
+                    {{c.NewConfirmed | number}} ({{getPercentage(c.TotalConfirmed,c.NewConfirmed)}})
+                  </span>
+                </div>
+                <div class="list-col ">
+                  <span class="tab-number">{{c.TotalDeaths | number}}</span>
+                  ({{getPercentage(c.TotalConfirmed,c.TotalDeaths)}})<br />
+                  <span class="text-danger tab-sub-number" *ngIf="c.NewDeaths>0">
+                    <nb-icon class="tab-number-icon" icon="arrow-up" status="danger"></nb-icon>
+                    {{c.NewDeaths | number}} ({{getPercentage(c.TotalDeaths,c.NewDeaths)}})
+                  </span>
+                </div>
+                <div class="list-col">
+                  <span class="tab-number">{{c.TotalRecovered |number}}</span>
+                  ({{getPercentage(c.TotalConfirmed,c.TotalRecovered)}})<br />
+                  <span class="text-success tab-sub-number" *ngIf="c.NewRecovered>0">
+                    <nb-icon class="tab-number-icon" icon="arrow-up" status="success"></nb-icon>
+                    {{c.NewRecovered | number}} ({{getPercentage(c.TotalRecovered,c.NewRecovered)}})
+                  </span>
+                </div>
+              </nb-list-item>
+            </nb-list>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-6">
+    <nb-card size='medium' [nbSpinner]="loading" nbSpinnerStatus="primary">
+      <nb-card-body class="padding-10">
+        <div id="world-map"></div>
+      </nb-card-body>
+    </nb-card>
+    <nb-card size='small' [nbSpinner]="linechartloading" nbSpinnerStatus="primary">
+      <nb-card-body class="padding-10">
+        <nb-select placeholder="Case Type" (selectedChange)="updateCaseType($event)" [selected]="selectedCaseType"
+          status="primary" class="margin-rt-5">
+          <nb-option [value]="caseType" class="text-capitalize" *ngFor="let caseType of caseTypes">{{caseType}}
+          </nb-option>
+        </nb-select>
+        <nb-select [placeholder]="'Top '+top+' Countries'" multiple (selectedChange)="updateLineChart($event)"
+          [selected]="topCountries" status="primary">
+          <nb-option [value]="country" *ngFor="let country of summary.Countries">{{country.Country}}</nb-option>
+        </nb-select>
+        <div id="line-chart"></div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

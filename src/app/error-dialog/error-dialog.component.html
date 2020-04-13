@@ -1,0 +1,9 @@
+<nb-card [size]="'tiny'" class="dialog-card">
+  <nb-card-header>{{title}}</nb-card-header>
+  <nb-card-body>
+    {{body}}
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="primary" class="pull-right ok" (click)="close()">Ok</button>
+  </nb-card-footer>
+</nb-card>
