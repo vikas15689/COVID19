@@ -116,13 +116,18 @@
       <nb-card-body class="padding-10">
         <nb-select placeholder="Case Type" (selectedChange)="updateCaseType($event)" [selected]="selectedCaseType"
           status="primary" filled class="margin-5">
-          <nb-option [value]="caseType" class="text-capitalize" *ngFor="let caseType of caseTypes">{{caseType}}
+          <nb-option [value]="caseType" class="text-capitalize" *ngFor="let caseType of caseTypes">{{caseType.charAt(0).toUpperCase() + caseType.slice(1)}}
           </nb-option>
         </nb-select>
         <nb-select [placeholder]="'Top '+top+' Countries'" multiple (selectedChange)="updateLineChart($event)"
           [selected]="topCountries" filled class="margin-5" status="primary">
           <nb-option [value]="country" *ngFor="let country of summary.Countries">{{country.Country}}</nb-option>
         </nb-select>
+        <nb-select [placeholder]="'Chart Type'" (selectedChange)="updateChartType($event)"
+        [selected]="chartType" filled class="margin-5" status="primary">
+        <nb-option [value]="'column'">Bar Chart</nb-option>
+        <nb-option [value]="'spline'">Line Chart</nb-option>
+      </nb-select>
         <div id="line-chart"></div>
       </nb-card-body>
     </nb-card>

@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   top = 5;
   series = [];
   chart: Highcharts.Chart;
+  chartType = 'column';
 
   orderByField = 'TotalConfirmed';
   order = 'desc';
@@ -59,8 +60,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   setOrderBy(field) {
     if (this.orderByField === field) {
       this.order = this.order === 'desc' ? 'asc' : 'desc';
-    }else{
-      this.orderByField=field;
+    } else {
+      this.orderByField = field;
     }
   }
 
@@ -72,7 +73,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     return 0;
   }
   updateCaseType(caseType: string) {
-    this.linechartloading=true;
+    this.linechartloading = true;
     this.selectedCaseType = caseType;
     this.getTopContriesData();
   }
@@ -82,6 +83,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.getTopContriesData();
   }
 
+  updateChartType(chartType: string) {
+    this.chartType = chartType;
+    this.getTopContriesData();
+  }
   getTopContriesData() {
     // console.log("Generating Series");
     this.series = [];
@@ -100,7 +105,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.series.push({
           name: country.Country,
           data,
-          type: 'spline',
+          type: this.chartType,
           tooltip: {
             valueDecimals: 0
           }
@@ -125,6 +130,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.chart = Highstock.stockChart('line-chart', {
       chart: {
         height: 270,
+        zoomType: 'x',
+        events: {
+          load: function () {
+            this.xAxis[0].setExtremes(+moment().subtract(30, 'days').format('x'), +moment().format('x'));
+          }
+        }
       },
       rangeSelector: {
         enabled: false,
