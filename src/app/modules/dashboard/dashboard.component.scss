@@ -125,3 +125,21 @@
   overflow-x:auto;
 }
 
+@media only screen and (max-width: 600px) {
+  .list-col{
+    font-size: 0.7rem;
+
+    nb-icon{
+      font-size: 0.7rem;
+    }
+    .tab-number{
+      font-size: 1.0rem;
+    }
+  }
+  .number{
+    font-size: 1.5rem;
+  }
+  .per{
+    display: none;
+  }
+}

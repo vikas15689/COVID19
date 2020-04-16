@@ -49,7 +49,7 @@
     </div>
     <div class="row">
       <div class="col-md-12 overflow-x-auto">
-        <nb-card [size]="'giant'" [nbSpinner]="loading" nbSpinnerStatus="primary" class="min-width-500">
+        <nb-card [size]="'giant'" [nbSpinner]="loading" nbSpinnerStatus="primary">
           <nb-card-header class="padding-0 border-bt-none">
             <nb-list>
               <nb-list-item>
@@ -79,23 +79,23 @@
                   <span class="tab-number">{{c.TotalConfirmed | number}}</span><br />
                   <span class="text-danger tab-sub-number" *ngIf="c.NewConfirmed>0">
                     <nb-icon class="tab-number-icon" icon="arrow-up" status="danger"></nb-icon>
-                    {{c.NewConfirmed | number}} ({{getPercentage(c.TotalConfirmed,c.NewConfirmed)}})
+                    {{c.NewConfirmed | number}} <span class="per">({{getPercentage(c.TotalConfirmed,c.NewConfirmed)}})</span>
                   </span>
                 </div>
                 <div class="list-col ">
                   <span class="tab-number">{{c.TotalDeaths | number}}</span>
-                  ({{getPercentage(c.TotalConfirmed,c.TotalDeaths)}})<br />
+                  <span class="per">({{getPercentage(c.TotalConfirmed,c.TotalDeaths)}})</span><br />
                   <span class="text-danger tab-sub-number" *ngIf="c.NewDeaths>0">
                     <nb-icon class="tab-number-icon" icon="arrow-up" status="danger"></nb-icon>
-                    {{c.NewDeaths | number}} ({{getPercentage(c.TotalDeaths,c.NewDeaths)}})
+                    {{c.NewDeaths | number}} <span class="per">({{getPercentage(c.TotalDeaths,c.NewDeaths)}})</span>
                   </span>
                 </div>
                 <div class="list-col">
                   <span class="tab-number">{{c.TotalRecovered |number}}</span>
-                  ({{getPercentage(c.TotalConfirmed,c.TotalRecovered)}})<br />
+                  <span class="per">({{getPercentage(c.TotalConfirmed,c.TotalRecovered)}})</span><br />
                   <span class="text-success tab-sub-number" *ngIf="c.NewRecovered>0">
                     <nb-icon class="tab-number-icon" icon="arrow-up" status="success"></nb-icon>
-                    {{c.NewRecovered | number}} ({{getPercentage(c.TotalRecovered,c.NewRecovered)}})
+                    {{c.NewRecovered | number}} <span class="per">({{getPercentage(c.TotalRecovered,c.NewRecovered)}})</span>
                   </span>
                 </div>
               </nb-list-item>
