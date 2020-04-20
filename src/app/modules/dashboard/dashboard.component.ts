@@ -191,7 +191,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       },
 
       legend: {
-        enabled: true,
+        enabled: false,
         align: 'right',
         layout: 'vertical',
         title: {

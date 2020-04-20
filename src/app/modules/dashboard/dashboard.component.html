@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 order-1">
-    <div class="row">
+    <div class="row count-cards">
 
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
         <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
           <nb-card-header>
             <div class="text-danger number">{{summary.Global.TotalConfirmed | number}}
@@ -16,7 +16,7 @@
           </nb-card-footer>
         </nb-card>
       </div>
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
         <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
           <nb-card-header>
             <div class="text-danger number">{{summary.Global.TotalDeaths | number}}
@@ -27,11 +27,11 @@
           </nb-card-header>
           <nb-card-footer>
             <span class="text-uppercase">Deaths</span> <span
-              class="pull-right">{{getPercentage(summary.Global.TotalConfirmed,summary.Global.TotalDeaths)}}</span>
+              class="pull-right per"> ({{getPercentage(summary.Global.TotalConfirmed,summary.Global.TotalDeaths)}})</span>
           </nb-card-footer>
         </nb-card>
       </div>
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
         <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
           <nb-card-header>
             <div class="text-success number">{{summary.Global.TotalRecovered | number }}
@@ -42,7 +42,7 @@
           </nb-card-header>
           <nb-card-footer>
             <span class="text-uppercase">Recovered</span> <span
-              class="pull-right">{{getPercentage(summary.Global.TotalConfirmed,summary.Global.TotalRecovered)}}</span>
+              class="pull-right per"> ({{getPercentage(summary.Global.TotalConfirmed,summary.Global.TotalRecovered)}})</span>
           </nb-card-footer>
         </nb-card>
       </div>

@@ -17,7 +17,7 @@
 
 }
 
-.pull-right{
+.pull-right {
   float: right;
 }
 
@@ -51,11 +51,11 @@
   padding: 10px;
 }
 
-.margin-rt-5{
+.margin-rt-5 {
   margin-right: 5px;
 }
 
-.margin-5{
+.margin-5 {
   margin: 5px;
 }
 
@@ -76,12 +76,14 @@
 .list-col {
   flex: 1 0 calc(25% - 1rem);
   margin: 0 0.5rem;
+
   label {
     font-weight: 600;
     cursor: pointer;
   }
 }
-.cursor-pointer{
+
+.cursor-pointer {
   cursor: pointer;
 }
 
@@ -101,45 +103,78 @@
   vertical-align: middle !important;
 }
 
-.order-1{
+.order-1 {
   order: 1;
 }
-.order-2{
+
+.order-2 {
   order: 2;
 }
-.order-3{
+
+.order-3 {
   order: 3;
 }
-.order-4{
+
+.order-4 {
   order: 4;
 }
 
-.order-5{
+.order-5 {
   order: 5;
 }
-.min-width-500{
+
+.min-width-500 {
   min-width: 500px;
 }
 
-.overflow-x-auto{
-  overflow-x:auto;
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 @media only screen and (max-width: 600px) {
-  .list-col{
+  .list-col {
     font-size: 0.7rem;
 
-    nb-icon{
+    nb-icon {
       font-size: 0.7rem;
     }
-    .tab-number{
+
+    .tab-number {
       font-size: 1.0rem;
     }
   }
-  .number{
+
+  .number {
     font-size: 1.5rem;
   }
-  .per{
+
+  .per {
     display: none;
+  }
+
+  .count-cards {
+    nb-card {
+      display: block;
+      margin-bottom: 10px;
+
+      nb-card-header {
+        display: inline-block;
+        border: none;
+        padding: 0.5rem 0.5rem;
+      }
+
+      nb-card-footer {
+        display: inline-block;
+        border: none;
+        font-size: 0.7rem;
+        float: right;
+        padding: 0.5rem 0.5rem;
+
+        .per{
+          margin-left: 5px;
+          display: block;
+        }
+      }
+    }
   }
 }
