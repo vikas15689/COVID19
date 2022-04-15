@@ -1,5 +1,10 @@
 # COVID19
 
+This project is created for assignment purpose and it is hosted [here](https://vikas15689.github.io/COVID19/#/dashboard)
+
+<img width="1678" alt="Screenshot 2022-04-15 at 1 48 07 PM" src="https://user-images.githubusercontent.com/63344337/163545315-0e71f164-1074-4133-8ced-dae98af42965.png">
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
 ## Development server
